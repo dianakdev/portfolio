@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карьера на промышленном заводе | Отправка резюме</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+			body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('зав.jpg') center/cover no-repeat fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-img {
+    height: 40px; 
+    width: auto;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+
+.logo i {
+    display: none; 
+}
+
+.logo img {
+    display: block;
+}
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), #2980b9);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(to right, var(--accent), #c0392b);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Vacancies Section */
+        .vacancies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .vacancy-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .vacancy-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .vacancy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .vacancy-card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .vacancy-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .vacancy-card .salary {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        
+        .vacancy-card .requirements {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        /* Form Section */
+        #apply {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .resume-form {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resume-form:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--secondary);
+            background-color: #f0f8ff;
+        }
+        
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .file-name {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #666;
+        }
+        
+        /* Contacts Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin: 1.5rem 0;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background-color: var(--success);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .resume-form {
+                padding: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <div class="header-content">
+               <div class="logo">
+    <img src="lg.png" alt="Темп-Авиа" class="logo-img">
+                    <span><h1 style="font-size: 38px;">АО АНПП ТЕМП-АВИА</span></h1>
+                </div>
+               <nav>
+                    <ul>
+                        <li><p style="font-size: 15px;"><a href="gl.html">Главная</a></li></p>
+                        <li><p style="font-size: 15px;"><a href="vacancii.html" class="active">Вакансии по образованию</a></li></p>
+                        <li><p style="font-size: 15px;"><a href="kyrsi.html">Курсы повышения квалификации</a></li></p>
+                     <li><p style="font-size: 15px;"><a href="#contacts" class="smooth-link">Контакты</a></li></p>
+					</ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Начните карьеру в ведущей промышленной компании</h1>
+                <p>Мы предлагаем стабильную работу, конкурентную зарплату и возможности для профессионального роста. Присоединяйтесь к нашей команде!</p>
+                <a href="#apply" class="btn">Отправить резюме</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="vacancies">
+        <div class="container">
+            <h2 class="section-title"style="color: white;">Открытые вакансии</h2>
+            <div class="vacancies">
+                <div class="vacancy-card fade-in">
+                    <h3>Инженер-технолог</h3>
+                    <div class="salary">от 60 000 руб.</div>
+                    <div class="requirements">
+                        <p><i class="fas fa-check"></i> Высшее техническое образование</p>
+                        <p><i class="fas fa-check"></i> Опыт работы от 3 лет</p>
+                        <p><i class="fas fa-check"></i> Знание систем автоматизации</p>
+                    </div>
+                    <a href="#apply" class="btn">Откликнуться</a>
+                </div>
+                
+                <div class="vacancy-card fade-in">
+                    <h3>Оператор станков с ЧПУ</h3>
+                    <div class="salary">от 45 000 руб.</div>
+                    <div class="requirements">
+                        <p><i class="fas fa-check"></i> Опыт работы на станках с ЧПУ</p>
+                        <p><i class="fas fa-check"></i> Знание программ управления</p>
+                        <p><i class="fas fa-check"></i> Ответственность и внимательность</p>
+                    </div>
+                    <a href="#apply" class="btn">Откликнуться</a>
+                </div>
+                
+                <div class="vacancy-card fade-in">
+                    <h3>Слесарь-ремонтник</h3>
+                    <div class="salary">от 40 000 руб.</div>
+                    <div class="requirements">
+                        <p><i class="fas fa-check"></i> Среднее специальное образование</p>
+                        <p><i class="fas fa-check"></i> Опыт работы от 2 лет</p>
+                        <p><i class="fas fa-check"></i> Навыки чтения технических чертежей</p>
+                    </div>
+                    <a href="#apply" class="btn">Откликнуться</a>
+                </div>
+                
+                <div class="vacancy-card fade-in">
+                    <h3>Электромонтер</h3>
+                    <div class="salary">от 50 000 руб.</div>
+                    <div class="requirements">
+                        <p><i class="fas fa-check"></i> Соответствующее образование</p>
+                        <p><i class="fas fa-check"></i> Группа допуска не ниже III</p>
+                        <p><i class="fas fa-check"></i> Опыт работы в промышленности</p>
+                    </div>
+                    <a href="#apply" class="btn">Откликнуться</a>
+                </div>
+				
+   <div class="course-ad" id="courseAd">
+    <div class="ad-content">
+        <button class="ad-close" onclick="closeAd()">&times;</button>
+        <div class="ad-text">
+            <strong>🎓 Курсы повышения квалификации</strong>
+            <p>Увеличьте шансы на трудоустройство!</p>
+        </div>
+        <a href="повышение квалификации.html" class="ad-btn">Смотреть курсы →</a>
+    </div>
+</div>
+
+<style>
+/* Простая реклама внизу страницы */
+.course-ad {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 10000;
+    padding: 15px;
+    max-width: 350px;
+    animation: slideUp 0.5s ease;
+    border-left: 4px solid #3498db;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ad-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ad-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-close:hover {
+    color: #e74c3c;
+}
+
+.ad-text {
+    flex: 1;
+}
+
+.ad-text strong {
+    color: #2c3e50;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ad-text p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.ad-btn {
+    background: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.ad-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+    .course-ad {
+        left: 20px;
+        right: 20px;
+        bottom: 10px;
+        max-width: none;
+    }
+    
+    .ad-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .ad-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+</style>
+
+<script>
+// Показ рекламы через 3 секунды
+setTimeout(function() {
+    document.getElementById('courseAd').style.display = 'block';
+}, 3000);
+
+// Закрытие рекламы
+function closeAd() {
+    document.getElementById('courseAd').style.display = 'none';
+}
+
+// Автоматическое закрытие через 30 секунд
+setTimeout(function() {
+    if (document.getElementById('courseAd').style.display === 'block') {
+        closeAd();
+    }
+}, 30000);
+
+// Показ при прокрутке вниз
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500 && document.getElementById('courseAd').style.display === 'none') {
+        document.getElementById('courseAd').style.display = 'block';
+    }
+});
+</script>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="apply">
+        <div class="container">
+            <h2 class="section-title">Отправить резюме</h2>
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> Ваше резюме успешно отправлено! Мы свяжемся с вами в ближайшее время.
+            </div>
+			<form action="save_to_db.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="fullName">ФИО *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="position">Желаемая должность *</label>
+                    <select id="position" name="position" required>
+                        <option value="">Выберите должность</option>
+                        <option value="Инженер-технолог">Инженер-технолог</option>
+                        <option value="Оператор станков с ЧПУ">Оператор станков с ЧПУ</option>
+                        <option value="Слесарь-ремонтник">Слесарь-ремонтник</option>
+                        <option value="Электромонтер">Электромонтер</option>
+                        <option value="Другая">Другая</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Опыт работы (лет)</label>
+                    <input type="number" id="experience" name="experience" min="0" max="50">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Дополнительная информация</label>
+                    <textarea id="message" name="message" placeholder="Расскажите о себе, своих навыках и достижениях..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Прикрепить резюме *</label>
+                    <div class="file-upload" id="fileUpload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Нажмите для загрузки файла</p>
+                        <p class="small">Поддерживаемые форматы: PDF, DOC, DOCX (макс. 5 МБ)</p>
+                        <div class="file-name" id="fileName">Файл не выбран</div>
+                    </div>
+                    <input type="file" id="resumeFile" name="resumeFile" accept=".pdf,.doc,.docx" style="display: none;" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Отправить резюме</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <div class="container">
+            <h2 class="section-title"style="color: white;">Контакты</h2>
+            <div class="contact-info">
+                <div class="contact-card fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>г. Арзамас,ул. Кирова, д.26</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (495) 123-45-67</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>temp.ru</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <i class="fas fa-clock"></i>
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт с 8:00 до 17:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-industry"></i>
+                    <span>ТЕМП-АВИА</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="vacancii.html">Вакансии по образованию</a>
+                    <a href="kyrsi.html">Курсы повышения квалификации</a>
+                    <a href="#contacts" class="smooth-link">Контакты</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <div class="copyright">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработка загрузки файла
+            const fileUpload = document.getElementById('fileUpload');
+            const resumeFile = document.getElementById('resumeFile');
+            const fileName = document.getElementById('fileName');
+            
+            fileUpload.addEventListener('click', function() {
+                resumeFile.click();
+            });
+            
+            resumeFile.addEventListener('change', function() {
+                if (resumeFile.files.length > 0) {
+                    fileName.textContent = resumeFile.files[0].name;
+                } else {
+                    fileName.textContent = 'Файл не выбран';
+                }
+            });
+            
+            // Плавная прокрутка к якорям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>

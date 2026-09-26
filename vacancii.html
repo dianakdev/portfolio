@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подбор вакансий по образованию | Промышленный Завод</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('z.jpg') center/cover no-repeat fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+       .logo-img {
+    height: 40px; 
+    width: auto;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+
+.logo i {
+    display: none; 
+}
+
+.logo img {
+    display: block;
+}
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), #2980b9);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(to right, var(--accent), #c0392b);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Education Filter Section */
+        .education-filter {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .filter-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        .form-group select:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* Vacancies Section */
+        .vacancies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .vacancy-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .vacancy-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .vacancy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .vacancy-card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .vacancy-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .vacancy-card .salary {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        
+        .vacancy-card .requirements {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .education-badge {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .no-vacancies {
+            text-align: center;
+            padding: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+        
+        .no-vacancies i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Индикатор загрузки */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin: 1.5rem 0;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .filter-container {
+                padding: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <div class="container">
+            <div class="header-content">
+               <div class="logo">
+    <img src="lg.png" alt="Темп-Авиа" class="logo-img">
+                    <span><h1 style="font-size: 38px;">АО АНПП ТЕМП-АВИА</span></h1>
+                </div>
+               <nav>
+                    <ul>
+                        <li><p style="font-size: 15px;"><a href="gl.html">Главная</a></li></p>
+                        <li><p style="font-size: 15px;"><a href="vacancii.html" class="active">Вакансии по образованию</a></li></p>
+                        <li><p style="font-size: 15px;"><a href="kyrsi.html">Курсы повышения квалификации</a></li></p>
+                     <li><p style="font-size: 15px;"><a href="#contacts" class="smooth-link">Контакты</a></li></p>
+					</ul>
+                </nav>
+            </div>
+        </div>gl
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Найдите работу по вашему образованию</h1>
+                <p>Мы подберем подходящие вакансии на основе вашего уровня образования и специализации</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="education-filter">
+        <div class="container">
+            <h2 class="section-title">Подбор вакансий</h2>
+            <div class="filter-container">
+                <div class="form-group">
+                    <label for="educationLevel">Уровень образования</label>
+                    <select id="educationLevel" name="educationLevel">
+                        <option value="">Выберите уровень образования</option>
+                        <option value="school">Среднее образование</option>
+                        <option value="college">Среднее специальное образование</option>
+                        <option value="bachelor">Высшее образование (бакалавриат)</option>
+                        <option value="master">Высшее образование (магистратура)</option>
+                        <option value="phd">Ученая степень</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="educationField">Направление образования</label>
+                    <select id="educationField" name="educationField">
+                        <option value="">Выберите направление</option>
+                        <option value="technical">Техническое</option>
+                        <option value="engineering">Инженерное</option>
+                        <option value="it">IT-технологии</option>
+                        <option value="economics">Экономика и управление</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                
+                <button id="findVacancies" class="btn" style="width: 100%;">Найти подходящие вакансии</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="vacancies">
+        <div class="container">
+            <h2 class="section-title"style="color: white;">Подходящие вакансии</h2>
+            
+            <div class="loading" id="loadingIndicator">
+                <div class="loading-spinner"></div>
+                <p>Ищем подходящие вакансии...</p>
+            </div>
+            
+            <div class="no-vacancies" id="noVacancies">
+                <i class="fas fa-search"></i>
+                <h3>Вакансии не найдены</h3>
+                <p>Попробуйте изменить критерии поиска или <a href="courses.html">посмотрите наши курсы</a> для повышения квалификации</p>
+            </div>
+            
+            <div class="vacancies" id="vacanciesList">
+                <!-- Вакансии будут загружаться здесь через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-industry"></i>
+                    <span>ТЕМП-АВИА</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="gl.html">Главная</a>
+                    <a href="vacancii.html">Вакансии по образованию</a>
+                    <a href="kyrsi.html">Курсы повышения квалификации</a>
+                    <a href="#contacts" class="smooth-link">Контакты</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2023 Промышленный Завод. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // База данных вакансий с требованиями к образованию
+        const vacancies = [
+            {
+                id: 1,
+                title: "Слесарь-сборщик",
+                salary: "от 35 000 руб.",
+                educationLevel: "school",
+                educationField: "technical",
+                requirements: [
+                    "Среднее образование",
+                    "Опыт работы приветствуется",
+                    "Ответственность и внимательность"
+                ],
+                description: "Сборка и регулировка узлов промышленного оборудования"
+            },
+            {
+                id: 2,
+                title: "Оператор станков с ЧПУ",
+                salary: "от 45 000 руб.",
+                educationLevel: "college",
+                educationField: "technical",
+                requirements: [
+                    "Среднее специальное образование",
+                    "Опыт работы на станках с ЧПУ",
+                    "Знание программ управления"
+                ],
+                description: "Работа на станках с числовым программным управлением"
+            },
+            {
+                id: 3,
+                title: "Техник-технолог",
+                salary: "от 50 000 руб.",
+                educationLevel: "college",
+                educationField: "technical",
+                requirements: [
+                    "Среднее специальное образование",
+                    "Опыт работы от 2 лет",
+                    "Знание технологических процессов"
+                ],
+                description: "Разработка и внедрение технологических процессов"
+            },
+            {
+                id: 4,
+                title: "Инженер-конструктор",
+                salary: "от 65 000 руб.",
+                educationLevel: "bachelor",
+                educationField: "engineering",
+                requirements: [
+                    "Высшее техническое образование",
+                    "Опыт работы от 3 лет",
+                    "Знание систем автоматизированного проектирования"
+                ],
+                description: "Проектирование и конструирование промышленного оборудования"
+            },
+            {
+                id: 5,
+                title: "Инженер-технолог",
+                salary: "от 70 000 руб.",
+                educationLevel: "bachelor",
+                educationField: "engineering",
+                requirements: [
+                    "Высшее техническое образование",
+                    "Опыт работы от 3 лет",
+                    "Знание систем автоматизации"
+                ],
+                description: "Разработка технологических процессов и их оптимизация"
+            },
+            {
+                id: 6,
+                title: "Программист-технолог",
+                salary: "от 80 000 руб.",
+                educationLevel: "bachelor",
+                educationField: "it",
+                requirements: [
+                    "Высшее образование в области IT",
+                    "Опыт программирования промышленного оборудования",
+                    "Знание языков программирования (C++, Python)"
+                ],
+                description: "Программирование систем управления технологическими процессами"
+            },
+            {
+                id: 7,
+                title: "Начальник производства",
+                salary: "от 90 000 руб.",
+                educationLevel: "master",
+                educationField: "engineering",
+                requirements: [
+                    "Высшее образование (магистратура)",
+                    "Опыт работы на руководящей должности от 5 лет",
+                    "Знание систем менеджмента качества"
+                ],
+                description: "Управление производственным подразделением"
+            },
+            {
+                id: 8,
+                title: "Главный технолог",
+                salary: "от 100 000 руб.",
+                educationLevel: "master",
+                educationField: "engineering",
+                requirements: [
+                    "Высшее образование (магистратура)",
+                    "Опыт работы от 7 лет",
+                    "Глубокие знания технологических процессов"
+                ],
+                description: "Руководство технологической службой предприятия"
+            },
+            {
+                id: 9,
+                title: "Научный сотрудник",
+                salary: "от 85 000 руб.",
+                educationLevel: "phd",
+                educationField: "engineering",
+                requirements: [
+                    "Ученая степень",
+                    "Опыт научно-исследовательской работы",
+                    "Публикации в научных журналах"
+                ],
+                description: "Проведение научных исследований и разработка новых технологий"
+            }
+        ];
+
+        // Функция для отображения вакансий
+        function displayVacancies(filteredVacancies) {
+            const vacanciesList = document.getElementById('vacanciesList');
+            const noVacancies = document.getElementById('noVacancies');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            
+            // Скрываем индикатор загрузки
+            loadingIndicator.style.display = 'none';
+            
+            // Очищаем список
+            vacanciesList.innerHTML = '';
+            
+            // Если вакансий нет, показываем сообщение
+            if (filteredVacancies.length === 0) {
+                noVacancies.style.display = 'block';
+                vacanciesList.style.display = 'none';
+                return;
+            }
+            
+            // Скрываем сообщение о отсутствии вакансий
+            noVacancies.style.display = 'none';
+            vacanciesList.style.display = 'grid';
+            
+            // Отображаем вакансии
+            filteredVacancies.forEach(vacancy => {
+                const vacancyCard = document.createElement('div');
+                vacancyCard.className = 'vacancy-card fade-in';
+                
+                // Определяем текст для бейджа образования
+                let educationText = '';
+                switch(vacancy.educationLevel) {
+                    case 'school': educationText = 'Среднее образование'; break;
+                    case 'college': educationText = 'Среднее специальное'; break;
+                    case 'bachelor': educationText = 'Высшее образование'; break;
+                    case 'master': educationText = 'Магистратура'; break;
+                    case 'phd': educationText = 'Ученая степень'; break;
+                }
+                
+                vacancyCard.innerHTML = `
+                    <div class="education-badge">${educationText}</div>
+                    <h3>${vacancy.title}</h3>
+                    <div class="salary">${vacancy.salary}</div>
+                    <p>${vacancy.description}</p>
+                    <div class="requirements">
+                        ${vacancy.requirements.map(req => `<p><i class="fas fa-check"></i> ${req}</p>`).join('')}
+                    </div>
+                    <a href="index.html#apply" class="btn">Откликнуться</a>
+                `;
+                
+                vacanciesList.appendChild(vacancyCard);
+            });
+            
+            // Активируем анимацию появления
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Функция для плавной прокрутки к секции вакансий
+        function scrollToVacancies() {
+            const vacanciesSection = document.getElementById('vacancies');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const sectionPosition = vacanciesSection.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: sectionPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Функция для фильтрации вакансий
+        function filterVacancies() {
+            const educationLevel = document.getElementById('educationLevel').value;
+            const educationField = document.getElementById('educationField').value;
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const vacanciesList = document.getElementById('vacanciesList');
+            const noVacancies = document.getElementById('noVacancies');
+            
+            // Показываем индикатор загрузки
+            loadingIndicator.style.display = 'block';
+            vacanciesList.style.display = 'none';
+            noVacancies.style.display = 'none';
+            
+            // Имитируем задержку поиска для лучшего UX
+            setTimeout(() => {
+                let filtered = vacancies;
+                
+                // Фильтрация по уровню образования
+                if (educationLevel) {
+                    filtered = filtered.filter(vacancy => vacancy.educationLevel === educationLevel);
+                }
+                
+                // Фильтрация по направлению образования
+                if (educationField) {
+                    filtered = filtered.filter(vacancy => vacancy.educationField === educationField);
+                }
+                
+                // Отображаем отфильтрованные вакансии
+                displayVacancies(filtered);
+                
+                // Прокручиваем к результатам
+                scrollToVacancies();
+            }, 800); // 800ms задержка для имитации поиска
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Показываем все вакансии при первой загрузке
+            displayVacancies(vacancies);
+            
+            // Обработчик для кнопки поиска
+            document.getElementById('findVacancies').addEventListener('click', filterVacancies);
+            
+            // Автоматический поиск при изменении выбора в селектах
+            document.getElementById('educationLevel').addEventListener('change', function() {
+                if (this.value && document.getElementById('educationField').value) {
+                    filterVacancies();
+                }
+            });
+            
+            document.getElementById('educationField').addEventListener('change', function() {
+                if (this.value && document.getElementById('educationLevel').value) {
+                    filterVacancies();
+                }
+            });
+            
+            // Активируем анимацию появления
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
